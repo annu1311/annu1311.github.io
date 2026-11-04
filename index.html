@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anushka Sharma · I build things that help people</title>
+<meta name="description" content="Anushka Sharma, B.Tech AI &amp; ML student at NMIMS. I build machine learning and data projects for healthcare, finance and education.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%98%95%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Caveat:wght@500;700&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f0eaff; --surface:#ffffff; --ink:#241a45; --muted:#5d5380; --shadow:#241a45;
+  --pink:#ff6b9d; --yellow:#ffd23f; --mint:#41dcb4; --blue:#7a95ff; --orange:#ff9f4a;
+  --on:#241a45;
+  --display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --hand:"Caveat","Comic Sans MS",cursive;
+  --body:"Nunito","Segoe UI",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--paper:#171233; --surface:#251e4a; --ink:#f4efff; --muted:#b7aedb; --shadow:#0a0719;}
+}
+:root[data-theme="dark"]{--paper:#171233; --surface:#251e4a; --ink:#f4efff; --muted:#b7aedb; --shadow:#0a0719;}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 18px/1.65 var(--body);-webkit-font-smoothing:antialiased;
+  background-image:radial-gradient(color-mix(in srgb,var(--ink) 14%,transparent) 1.2px,transparent 1.2px);background-size:26px 26px}
+a{color:inherit;text-underline-offset:4px;text-decoration-color:var(--pink);text-decoration-thickness:3px}
+a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:8px}
+.wrap{max-width:960px;margin:0 auto;padding:0 24px}
+svg.d{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;overflow:visible}
+.hand{font:700 24px/1.1 var(--hand);color:var(--muted)}
+
+/* nav */
+header.nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(8px);border-bottom:2.5px solid var(--ink)}
+.nav .wrap{display:flex;gap:20px;align-items:center;height:60px;overflow-x:auto;white-space:nowrap}
+.nav b{font:800 20px var(--display);margin-right:auto;display:flex;gap:8px;align-items:center}
+.nav a{font:700 15px var(--display);text-decoration:none}
+.nav a:hover{text-decoration:underline;text-decoration-color:var(--pink)}
+.mode{font:700 14px var(--display);background:var(--yellow);color:var(--on);border:2.5px solid var(--ink);border-radius:99px;padding:6px 14px;cursor:pointer;box-shadow:3px 3px 0 var(--shadow)}
+.mode:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--shadow)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:32px;align-items:center;padding:64px 0 32px}
+.hero h1{font:800 clamp(40px,6.6vw,70px)/1.02 var(--display);letter-spacing:-.03em;margin:0 0 22px}
+.mark{background:linear-gradient(transparent 56%,var(--yellow) 56%,var(--yellow) 92%,transparent 92%);padding:0 4px;color:var(--on)}
+.hero p.lead{font-size:clamp(19px,2.3vw,22px);max-width:30em;margin:0 0 10px}
+.aside{display:block;margin:0 0 26px;transform:rotate(-2deg)}
+.links{display:flex;flex-wrap:wrap;gap:14px}
+.btn{font:800 16px var(--display);padding:12px 22px;border-radius:14px;text-decoration:none;border:2.5px solid var(--ink);color:var(--on);background:var(--surface);box-shadow:5px 5px 0 var(--shadow);transition:transform .12s,box-shadow .12s}
+.btn.pink{background:var(--pink)} .btn.mint{background:var(--mint)} .btn.sun{background:var(--yellow)}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--shadow)}
+.btn:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--shadow)}
+
+.scene{position:relative;aspect-ratio:1/1;max-width:380px;justify-self:center;width:100%}
+.scene .mug{position:absolute;inset:14% 12% 8% 8%;color:var(--ink)}
+.scene .mug svg{width:100%;height:100%;stroke-width:2.6;fill:none}
+.mug .cup{fill:var(--pink)}
+.mug .steam{stroke:var(--muted);animation:steam 3.2s ease-in-out infinite}
+.mug .steam.s2{animation-delay:-1.2s}
+@keyframes steam{0%,100%{transform:translateY(0);opacity:.9}50%{transform:translateY(-7px);opacity:.45}}
+.star,.moon{position:absolute;color:var(--ink)}
+.star svg,.moon svg{width:100%;height:100%;stroke-width:2.6}
+.star.a{width:15%;top:2%;left:60%;color:var(--yellow);animation:tw 3s ease-in-out infinite}
+.star.b{width:10%;top:30%;left:2%;color:var(--mint)}
+.star.c{width:9%;top:8%;left:20%;color:var(--blue);animation:tw 4s ease-in-out -1s infinite}
+.moon{width:20%;top:0;right:2%;color:var(--yellow)}
+.moon svg,.star svg{fill:currentColor;stroke:var(--ink)}
+@keyframes tw{0%,100%{transform:scale(1) rotate(0)}50%{transform:scale(1.2) rotate(15deg)}}
+.refill{position:absolute;left:50%;bottom:-6px;transform:translateX(-50%);white-space:nowrap}
+.refill button{font:800 15px var(--display);background:var(--mint);color:var(--on);border:2.5px solid var(--ink);border-radius:99px;padding:8px 18px;cursor:pointer;box-shadow:4px 4px 0 var(--shadow)}
+.refill button:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--shadow)}
+.cups{text-align:center;margin-top:10px;min-height:1.2em}
+
+/* stickers (wins) */
+.stickers{display:flex;flex-wrap:wrap;gap:16px;margin:36px 0 8px}
+.sticker{font:800 17px/1.2 var(--display);color:var(--on);padding:14px 18px;border:2.5px solid var(--ink);border-radius:16px;box-shadow:5px 5px 0 var(--shadow);cursor:default}
+.sticker small{display:block;font:600 14px var(--body);opacity:.85}
+.sticker:nth-child(1){background:var(--yellow);transform:rotate(-2.5deg);cursor:pointer}
+.sticker:nth-child(2){background:var(--mint);transform:rotate(1.8deg)}
+.sticker:nth-child(3){background:var(--pink);transform:rotate(-1.2deg)}
+.sticker:nth-child(4){background:var(--blue);transform:rotate(2.4deg)}
+.sticker:nth-child(1):hover{transform:rotate(2deg) scale(1.05)}
+
+section{padding:56px 0 24px}
+h2{font:800 clamp(30px,4.4vw,42px)/1.1 var(--display);letter-spacing:-.02em;margin:0 0 6px;display:inline-flex;gap:12px;align-items:center}
+h2 svg.d{width:.9em;height:.9em}
+.squig{display:block;width:140px;height:12px;color:var(--pink);margin:0 0 26px}
+.squig svg{width:100%;height:100%;stroke-width:4}
+
+/* about */
+.card{background:var(--surface);border:2.5px solid var(--ink);border-radius:20px;box-shadow:6px 6px 0 var(--shadow);padding:26px 28px}
+#about .card p{margin:0 0 14px;max-width:38em}
+#about .card p:last-child{margin:0}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px;margin-top:22px}
+.fact{background:var(--surface);border:2.5px solid var(--ink);border-radius:16px;padding:14px 16px;box-shadow:4px 4px 0 var(--shadow)}
+.fact .hand{display:block;margin-bottom:2px}
+.fact b{font:800 18px var(--display)}
+.fact:nth-child(odd){transform:rotate(-1deg)} .fact:nth-child(even){transform:rotate(1deg)}
+
+/* projects */
+details{background:var(--surface);border:2.5px solid var(--ink);border-radius:18px;margin-bottom:18px;box-shadow:5px 5px 0 var(--shadow)}
+summary{list-style:none;cursor:pointer;padding:16px 20px;display:grid;grid-template-columns:64px 1fr auto;gap:2px 16px;align-items:center}
+summary::-webkit-details-marker{display:none}
+.ico{grid-row:1/3;width:60px;height:60px;border:2.5px solid var(--ink);border-radius:16px;display:grid;place-items:center;color:var(--on);font-size:34px}
+.ico svg.d{width:36px;height:36px;stroke-width:3.2}
+summary h3{font:800 21px/1.2 var(--display);margin:0}
+summary .when{font:700 22px var(--hand);color:var(--muted);grid-column:3;grid-row:1}
+summary .stack{grid-column:2/4;color:var(--muted);font-size:16px}
+summary:hover h3{text-decoration:underline;text-decoration-color:var(--pink);text-decoration-thickness:3px}
+details[open] summary{border-bottom:2.5px dashed var(--ink)}
+.detail{padding:16px 24px 22px 24px}
+.detail ul{margin:0 0 14px;padding-left:22px}
+.detail li{margin:6px 0}
+.detail li::marker{color:var(--pink)}
+.out{font:800 16px var(--display);background:var(--yellow);color:var(--on);display:inline-block;padding:4px 12px;border-radius:99px;border:2px solid var(--ink);margin:0 0 12px}
+.why{font:700 25px/1.15 var(--hand);color:var(--ink);margin:6px 0 14px;display:flex;gap:10px;align-items:flex-start}
+.why svg{flex:none;width:34px;height:34px;color:var(--pink);margin-top:2px}
+.repo{font:800 15px var(--display)}
+.c1 .ico{background:var(--pink)} .c2 .ico{background:var(--mint)} .c3 .ico{background:var(--yellow)}
+.c4 .ico{background:var(--blue)} .c5 .ico{background:var(--orange)} .c6 .ico{background:var(--pink)}
+
+/* experience */
+.job h3{font:800 22px var(--display);margin:0}
+.job .hand{margin:2px 0 12px}
+.job ul{padding-left:22px;margin:0}
+.job li{margin:6px 0} .job li::marker{color:var(--mint)}
+
+/* skills */
+.skillrow{margin-bottom:22px}
+.skillrow h3{font:800 17px var(--display);margin:0 0 10px}
+.tags{display:flex;flex-wrap:wrap;gap:10px}
+.tags span{font:700 15px var(--display);color:var(--on);padding:5px 14px;border:2.5px solid var(--ink);border-radius:99px;background:var(--yellow);box-shadow:3px 3px 0 var(--shadow)}
+.tags span:nth-child(4n+2){background:var(--mint);transform:rotate(-1.5deg)}
+.tags span:nth-child(4n+3){background:var(--pink);transform:rotate(1.2deg)}
+.tags span:nth-child(4n+4){background:var(--blue);transform:rotate(-.8deg)}
+
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.cols h3{font:800 20px var(--display);margin:0 0 10px}
+.plain{list-style:none;padding:0;margin:0}
+.plain li{padding:9px 0;border-bottom:2px dashed color-mix(in srgb,var(--ink) 30%,transparent)}
+.plain li:last-child{border-bottom:0}
+.plain small{display:block;color:var(--muted);font-size:15px}
+
+/* contact */
+.contact .card{background:var(--yellow);color:var(--on);text-align:left;position:relative}
+.contact p{font-size:22px;max-width:28em;margin:0 0 18px}
+.contact .btn{background:var(--surface);color:var(--on)}
+.contact .doodle{position:absolute;right:24px;top:16px;width:90px;height:90px;color:var(--on);fill:var(--pink)}
+footer{padding:36px 0 60px;text-align:center}
+footer .hand{font-size:26px}
+
+/* confetti */
+.bit{position:fixed;z-index:50;pointer-events:none;font-size:26px}
+
+@media (max-width:760px){
+  body{font-size:17px}
+  .hero{grid-template-columns:1fr;padding-top:40px}
+  .scene{max-width:300px}
+  .cols{grid-template-columns:1fr}
+  summary{grid-template-columns:52px 1fr;padding:14px}
+  .ico{width:52px;height:52px}
+  summary .when{grid-column:2;grid-row:auto}
+  summary .stack{grid-column:1/-1}
+  .contact .doodle{display:none}
+  .card{padding:20px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .mug .steam,.star{animation:none}
+  .btn,.sticker{transition:none}
+}
+</style>
+</head>
+<body>
+
+<!-- doodle library -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-eye" viewBox="0 0 64 64"><path d="M4 32C12 18 24 12 32 12s20 6 28 20c-8 14-20 20-28 20S12 46 4 32z"/><circle cx="32" cy="32" r="9"/><circle cx="32" cy="32" r="2.5" fill="currentColor"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 64 64"><path d="M8 56h48M14 56V38h9v18M29 56V26h9v30M44 56V34h9v22"/><path d="M8 20l14-9 12 8 20-13M46 8h8v8"/></symbol>
+  <symbol id="i-bus" viewBox="0 0 64 64"><path d="M10 10h44a4 4 0 0 1 4 4v34H6V14a4 4 0 0 1 4-4z"/><path d="M6 30h52M18 10v20M46 10v20"/><circle cx="19" cy="50" r="5" fill="var(--paper)"/><circle cx="45" cy="50" r="5" fill="var(--paper)"/></symbol>
+  <symbol id="i-notes" viewBox="0 0 64 64"><path d="M16 6h36v52H16zM16 16H8M16 28H8M16 40H8"/><circle cx="29" cy="20" r="3.5"/><circle cx="42" cy="32" r="3.5"/><circle cx="30" cy="45" r="3.5"/><path d="M31.5 22.5l8 7M40 35l-8 7"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 64 64"><path d="M32 56C10 42 4 26 14 15c7-7 15-3 18 4 3-7 11-11 18-4 10 11 4 27-18 41z"/><path d="M14 32h10l4-8 7 18 5-10h10"/></symbol>
+  <symbol id="i-cross" viewBox="0 0 64 64"><circle cx="32" cy="32" r="25"/><path d="M32 18v28M18 32h28"/></symbol>
+  <symbol id="i-star" viewBox="0 0 64 64"><path d="M32 5l7 19h20L43 36l6 20-17-12-17 12 6-20L5 24h20z"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 64 64"><path d="M42 6A26 26 0 1 0 58 44 21 21 0 0 1 42 6z"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 64 64"><path d="M6 8C36 6 52 24 46 50M32 40l14 12 8-16"/></symbol>
+  <symbol id="i-bulb" viewBox="0 0 64 64"><path d="M22 44c-8-6-10-12-8-20 3-12 22-16 31-6 6 7 4 18-3 26-3 3-3 5-3 8H25c0-3-1-5-3-8zM25 54h14M27 60h10"/></symbol>
+  <symbol id="i-squig" viewBox="0 0 140 12"><path d="M2 6c8-8 16 8 24 0s16 8 24 0 16 8 24 0 16 8 24 0 16 8 24 0"/></symbol>
+</svg>
+
+<header class="nav">
+  <div class="wrap">
+    <b><svg class="d" style="width:22px;height:22px;color:var(--pink)"><use href="#i-star"/></svg>Anushka Sharma</b>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Say hi</a>
+    <button class="mode" id="mode" type="button" aria-pressed="false">🌙 Night shift</button>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <div class="hero">
+    <div>
+      <h1>Hi, I'm Anushka. I build things that <span class="mark">help people.</span></h1>
+      <p class="lead">I'm a final-year AI &amp; ML student at NMIMS. I turn data and models into tools for healthcare, financial literacy and education. Most of it gets built after midnight.</p>
+      <span class="hand aside">(yes, with coffee. lots of coffee.)</span>
+      <div class="links">
+        <a class="btn pink" href="#projects">See what I've built</a>
+        <a class="btn mint" href="https://github.com/annu1311">GitHub</a>
+        <a class="btn sun" href="mailto:anushkasharma131105@gmail.com">Email me</a>
+      </div>
+    </div>
+
+    <div>
+      <div class="scene">
+        <span class="moon"><svg class="d"><use href="#i-moon"/></svg></span>
+        <span class="star a"><svg class="d"><use href="#i-star"/></svg></span>
+        <span class="star b"><svg class="d"><use href="#i-star"/></svg></span>
+        <span class="star c"><svg class="d"><use href="#i-star"/></svg></span>
+        <div class="mug" aria-hidden="true">
+          <svg viewBox="0 0 200 200" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <path class="steam" d="M70 56c-10-10 10-16 0-28"/>
+            <path class="steam s2" d="M100 56c-10-10 10-16 0-28"/>
+            <path class="steam" d="M130 56c-10-10 10-16 0-28"/>
+            <path class="cup" d="M42 76h112v58a34 34 0 0 1-34 34H76a34 34 0 0 1-34-34z"/>
+            <path d="M154 92h12a22 22 0 0 1 0 44h-12"/>
+            <path d="M60 104c10 6 18-6 28 0s18-6 28 0 18-6 22 0"/>
+            <circle cx="78" cy="136" r="3" fill="currentColor"/><circle cx="118" cy="136" r="3" fill="currentColor"/>
+            <path d="M92 146c6 6 14 6 20 0"/>
+          </svg>
+        </div>
+        <div class="refill"><button type="button" id="refill">Refill ☕</button></div>
+      </div>
+      <p class="hand cups" id="cups" aria-live="polite">cups today: 0</p>
+    </div>
+  </div>
+
+  <div class="stickers">
+    <div class="sticker" id="win" role="button" tabindex="0" aria-label="AISE Hack 2026 winner, click for confetti">🏆 AISE Hack 2026<small>Winner, 1st place · click me</small></div>
+    <div class="sticker">GATE 2026<small>Qualified</small></div>
+    <div class="sticker">3.73 / 4 CGPA<small>MPSTME, NMIMS · through Sem 6</small></div>
+    <div class="sticker">NPTEL Deep Learning<small>88/100 · Elite + Silver · IIT Ropar</small></div>
+  </div>
+
+  <section id="about">
+    <h2><svg class="d" style="color:var(--yellow);stroke:var(--ink)"><use href="#i-bulb"/></svg>A bit about me</h2>
+    <span class="squig"><svg class="d"><use href="#i-squig"/></svg></span>
+    <div class="card">
+      <p>I started with a simple question: what can a model do for someone who actually needs it? That question keeps pulling me toward healthcare, financial literacy and education, especially for people in India who don't always get good tools.</p>
+      <p>I'm a late-night sprinter. The quiet hours, a mug of coffee and a half-broken pipeline are where I do my best thinking. I'm happiest working with other people too, which is why I help run the ACM student chapter and lead a dance crew of 60+.</p>
+      <p>If you have an idea that could help people, I'd love to hear it.</p>
+    </div>
+    <div class="facts">
+      <div class="fact"><span class="hand">fuel</span><b>Caffeine, mostly</b></div>
+      <div class="fact"><span class="hand">peak hours</span><b>After midnight</b></div>
+      <div class="fact"><span class="hand">off the keyboard</span><b>Dance Dukes, 60+ members</b></div>
+      <div class="fact"><span class="hand">right now</span><b>🎯 Focusing</b></div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2><svg class="d" style="color:var(--pink)"><use href="#i-star"/></svg>Things I've built</h2>
+    <span class="squig"><svg class="d"><use href="#i-squig"/></svg></span>
+
+    <details class="c1" open>
+      <summary>
+        <span class="ico"><svg class="d"><use href="#i-eye"/></svg></span>
+        <h3>Diabetic Retinopathy Detection</h3><span class="when">Aug – Oct 2025</span>
+        <span class="stack">TensorFlow, Keras, CNN, OpenCV, Scikit-learn</span>
+      </summary>
+      <div class="detail">
+        <ul>
+          <li>Built a deep learning pipeline using TensorFlow and an Attention U-Net for retinal lesion segmentation.</li>
+          <li>Applied transfer learning, data augmentation and class-weighted loss to improve model performance.</li>
+        </ul>
+        <p class="out">78.89% accuracy · Cohen's κ = 0.674</p>
+        <p class="why"><svg class="d"><use href="#i-arrow"/></svg>Spotting eye damage early is how vision gets saved, and not every clinic has a specialist on hand.</p>
+        <a class="repo" href="https://github.com/Devesh1105/diabetic-retenopathy-dl">View repository</a>
+      </div>
+    </details>
+
+    <details class="c2">
+      <summary>
+        <span class="ico"><svg class="d"><use href="#i-chart"/></svg></span>
+        <h3>E-Commerce Retail Operations &amp; Profitability Analysis</h3><span class="when">May – Jun 2026</span>
+        <span class="stack">Pandas, PostgreSQL, Power BI</span>
+      </summary>
+      <div class="detail">
+        <ul>
+          <li>Cleaned 99K+ orders across 9 tables (Olist), fixed a 26% duplicate rate in geolocation data and reconciled payment/order mismatches.</li>
+          <li>Wrote SQL with CTEs and window functions that surfaced a 6.8% late-delivery rate and its link to review scores; built an RFM customer segmentation.</li>
+          <li>Built a live-connected 3-page Power BI dashboard with DAX measures for on-time delivery, repeat purchase rate and review score.</li>
+        </ul>
+        <p class="why"><svg class="d"><use href="#i-arrow"/></svg>Late deliveries quietly cost customers' trust. The data showed where and how much.</p>
+      </div>
+    </details>
+
+    <details class="c3">
+      <summary>
+        <span class="ico"><svg class="d"><use href="#i-bus"/></svg></span>
+        <h3>BusNexus: ADBMS Ticket Booking System</h3><span class="when">Jan – Apr 2026</span>
+        <span class="stack">PostgreSQL, PL/SQL, Normalization, Stored Procedures</span>
+      </summary>
+      <div class="detail">
+        <ul>
+          <li>Designed a normalized PostgreSQL database with 10+ relational tables following 3NF.</li>
+          <li>Implemented PL/SQL stored procedures and triggers to support concurrent ticket-booking transactions.</li>
+          <li>Improved consistency and reduced redundancy through schema normalization and optimization.</li>
+        </ul>
+        <p class="why"><svg class="d"><use href="#i-arrow"/></svg>When many people book at once, nobody should lose a seat to a database glitch.</p>
+        <a class="repo" href="https://github.com/PranavMundhra/BusNexus">View repository</a>
+      </div>
+    </details>
+
+    <details class="c4">
+      <summary>
+        <span class="ico"><svg class="d"><use href="#i-notes"/></svg></span>
+        <h3>Concept Linking Note Taking Application</h3><span class="when">Jan – Apr 2026</span>
+        <span class="stack">React, Node.js, MongoDB, Docker, Jenkins, CI/CD</span>
+      </summary>
+      <div class="detail">
+        <ul>
+          <li>Developed a full-stack note-taking app with semantic concept linking.</li>
+          <li>Designed RESTful APIs and added Docker containerization with Jenkins CI/CD, reducing deployment time.</li>
+          <li>Kept the backend modular and automated deployment workflows.</li>
+        </ul>
+        <p class="why"><svg class="d"><use href="#i-arrow"/></svg>Ideas rarely live in isolation, so notes shouldn't either.</p>
+      </div>
+    </details>
+
+    <details class="c5">
+      <summary>
+        <span class="ico"><svg class="d"><use href="#i-heart"/></svg></span>
+        <h3>Heart Disease Risk Predictor</h3><span class="when">Machine learning</span>
+        <span class="stack">Python, Scikit-learn, Jupyter Notebook</span>
+      </summary>
+      <div class="detail">
+        <ul>
+          <li>Built an ML model that predicts heart disease risk from patient data.</li>
+        </ul>
+        <p class="why"><svg class="d"><use href="#i-arrow"/></svg>Knowing your risk sooner gives you more time to act on it.</p>
+        <a class="repo" href="https://github.com/annu1311/heart-disease-risk-prediction">View repository</a>
+      </div>
+    </details>
+
+    <details class="c6">
+      <summary>
+        <span class="ico"><svg class="d"><use href="#i-cross"/></svg></span>
+        <h3>Medicare Healthcare Analytics Dashboard</h3><span class="when">Data visualization</span>
+        <span class="stack">Power BI, CMS dataset</span>
+      </summary>
+      <div class="detail">
+        <ul>
+          <li>Built a Power BI dashboard analysing gaps in Medicare services in the US, using CMS data.</li>
+        </ul>
+        <p class="why"><svg class="d"><use href="#i-arrow"/></svg>You can't fix gaps in care until someone makes them visible.</p>
+        <a class="repo" href="https://github.com/annu1311/Medicare-healthcare-analytics-dashboard">View repository</a>
+      </div>
+    </details>
+  </section>
+
+  <section id="experience">
+    <h2><svg class="d" style="color:var(--mint)"><use href="#i-chart"/></svg>Experience</h2>
+    <span class="squig"><svg class="d"><use href="#i-squig"/></svg></span>
+    <div class="card job">
+      <h3>Data Analytics Intern, CodeAlpha</h3>
+      <div class="hand">June 2026</div>
+      <ul>
+        <li>Collected and cleaned 10,000+ records using BeautifulSoup, Pandas and NumPy, preparing structured datasets for analysis.</li>
+        <li>Ran exploratory data analysis to identify pricing and demand patterns.</li>
+        <li>Built visualizations in Matplotlib and Seaborn to communicate findings.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2><svg class="d" style="color:var(--blue)"><use href="#i-bulb"/></svg>My toolbox</h2>
+    <span class="squig"><svg class="d"><use href="#i-squig"/></svg></span>
+    <div class="skillrow"><h3>Programming</h3><div class="tags"><span>Python</span><span>SQL</span><span>R</span><span>C++</span></div></div>
+    <div class="skillrow"><h3>Databases</h3><div class="tags"><span>MySQL</span><span>PostgreSQL</span><span>MongoDB</span></div></div>
+    <div class="skillrow"><h3>Data &amp; analytics</h3><div class="tags"><span>Power BI (DAX, Power Query)</span><span>Pandas</span><span>NumPy</span><span>EDA</span><span>Excel</span><span>Matplotlib</span><span>Seaborn</span></div></div>
+    <div class="skillrow"><h3>AI &amp; ML</h3><div class="tags"><span>TensorFlow</span><span>Keras</span><span>Scikit-learn</span><span>CNN</span><span>NLP</span><span>OpenCV</span><span>Transfer learning</span><span>Feature engineering</span><span>Model evaluation</span></div></div>
+    <div class="skillrow"><h3>Development &amp; DevOps</h3><div class="tags"><span>Docker</span><span>Git</span><span>Jupyter</span><span>Google Colab</span></div></div>
+  </section>
+
+  <section id="education">
+    <h2><svg class="d" style="color:var(--orange)"><use href="#i-star"/></svg>School, people &amp; certificates</h2>
+    <span class="squig"><svg class="d"><use href="#i-squig"/></svg></span>
+    <div class="cols">
+      <div class="card">
+        <h3>Education</h3>
+        <ul class="plain">
+          <li>B.Tech, AI &amp; ML, MPSTME, NMIMS University<small>2023 – 2027 · CGPA 3.73/4 (Sem 6)</small></li>
+          <li>Class 12, IBS Global Academy, Ujjain<small>2022 – 2023 · 77.2%</small></li>
+          <li>Class 10, Yatharth Futuristic Academy, Ujjain<small>2020 – 2021 · 91.2%</small></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Leadership</h3>
+        <ul class="plain">
+          <li>Executive Advisor, ACM Student Chapter<small>2025 – present</small></li>
+          <li>Editorial Advisor, AIML Chronicles newsletter</li>
+          <li>Core Committee, Dance Dukes<small>Led 60+ members</small></li>
+        </ul>
+        <h3 style="margin-top:22px">Certifications</h3>
+        <ul class="plain">
+          <li>Deep Learning, NPTEL IIT Ropar<small>88/100, Elite + Silver</small></li>
+          <li>Reinforcement Learning, NPTEL IIT Madras</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2><svg class="d" style="color:var(--pink)"><use href="#i-heart"/></svg>Say hi</h2>
+    <span class="squig"><svg class="d"><use href="#i-squig"/></svg></span>
+    <div class="card">
+      <svg class="d doodle" viewBox="0 0 64 64"><use href="#i-star"/></svg>
+      <p>Got a project, a research idea or just want to talk about AI? Write to me. I read everything, usually late at night.</p>
+      <a class="btn" href="mailto:anushkasharma131105@gmail.com">anushkasharma131105@gmail.com</a>
+      <p style="margin:18px 0 0;font-size:18px"><a href="https://github.com/annu1311">github.com/annu1311</a></p>
+    </div>
+  </section>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="hand">made with coffee and a lot of late nights</span><br>
+    © <span id="y">2026</span> Anushka Sharma
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement, reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* night shift toggle */
+  var btn=document.getElementById('mode');
+  function isDark(){
+    var t=root.getAttribute('data-theme');
+    return t? t==='dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+  }
+  function paint(){
+    var d=isDark();
+    btn.textContent=d?'☀️ Day shift':'🌙 Night shift';
+    btn.setAttribute('aria-pressed',d);
+  }
+  try{var saved=localStorage.getItem('theme'); if(saved) root.setAttribute('data-theme',saved);}catch(e){}
+  paint();
+  btn.addEventListener('click',function(){
+    var next=isDark()?'light':'dark';
+    root.setAttribute('data-theme',next);
+    try{localStorage.setItem('theme',next);}catch(e){}
+    paint();
+  });
+
+  /* coffee counter */
+  var n=0, out=document.getElementById('cups');
+  var lines=['cups today: 0','cup 1: warming up','cup 2: now we\'re talking','cup 3: the code compiles itself','cup 4: I can hear colours','cup 5: ok that\'s enough. water?'];
+  document.getElementById('refill').addEventListener('click',function(e){
+    n++; out.textContent = n<lines.length? lines[n] : 'cup '+n+': please drink some water';
+    burst(e.clientX,e.clientY,['☕','✨']);
+  });
+
+  /* confetti */
+  function burst(x,y,set){
+    if(reduce) return;
+    set=set||['⭐','✨','💖','☕','🎉','🧠'];
+    for(var i=0;i<14;i++){
+      var s=document.createElement('span'); s.className='bit';
+      s.textContent=set[Math.floor(Math.random()*set.length)];
+      s.style.left=x+'px'; s.style.top=y+'px'; document.body.appendChild(s);
+      var a=Math.random()*Math.PI*2, d=60+Math.random()*110;
+      s.animate([{transform:'translate(0,0) scale(.6)',opacity:1},
+                 {transform:'translate('+Math.cos(a)*d+'px,'+(Math.sin(a)*d-40)+'px) rotate('+(Math.random()*360)+'deg) scale(1.2)',opacity:0}],
+                {duration:900+Math.random()*500,easing:'cubic-bezier(.2,.7,.3,1)'}).onfinish=(function(el){return function(){el.remove();};})(s);
+    }
+  }
+  var win=document.getElementById('win');
+  function fire(e){var r=win.getBoundingClientRect(); burst(e.clientX||r.left+r.width/2, e.clientY||r.top+r.height/2);}
+  win.addEventListener('click',fire);
+  win.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();fire(e);}});
+
+  document.getElementById('y').textContent=new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
